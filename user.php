@@ -116,6 +116,18 @@ class User{
         }
 
     }
+
+    function updateContact($id,$name,$phone,$email,$address){
+            var_dump($id);
+            $sql_update = "UPDATE contacts SET name = ? , phone= ? , email= ?, address = ? WHERE id=?";
+            $REQ= $this->conx->prepare($sql_update);
+            $REQ->execute([$name, $phone, $email,$address, $id]);
+            header('location:contacts.php');
+
+
+    }
+
+   
 }
 
 
