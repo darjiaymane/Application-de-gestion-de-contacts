@@ -73,9 +73,18 @@ class User{
             }
         }
     }
+    function display(){
 
+            $sql_valid = "SELECT * FROM contacts WHERE user =?";
+
+            $REQ= $this->conx->prepare($sql_valid);
+            $REQ->execute([$_SESSION['id']]);
+
+            $req= $REQ->fetchAll(PDO::FETCH_ASSOC);
+
+            return $req;
+    }
     
-
 
 }
 
