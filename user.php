@@ -84,7 +84,23 @@ class User{
 
             return $req;
     }
+    function addContact($name, $phone, $email, $address){
+
+        $sql_insert = "INSERT INTO contacts(Name, Phone, Email,  address, user ) VALUES (?,?,?,?,?)";
+        $REQ= $this->conx->prepare($sql_insert);
+        $REQ->execute([$name, $phone, $email, $address, $_SESSION['id']]);
+
+        if($REQ){
+            header("location:contacts.php");
+        }
+        else {
+            echo "something went wrong!";
+        }
+    }
+
     
+
+   
 
 }
 
