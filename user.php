@@ -127,7 +127,14 @@ class User{
 
     }
 
-   
+    function deleteContact($id){
+        $REQ = $this->conx->prepare("DELETE FROM contacts WHERE id=? ");
+        $REQ->execute([$id]);
+        header('location:contacts.php');
+    }
+
+
+
 }
 
 
