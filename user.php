@@ -134,7 +134,11 @@ class User{
     }
 
 
-
+//    function to destroy session
+        public function logout(){
+            session_destroy();
+            header('location:signin.php');
+        }
 }
 
 
