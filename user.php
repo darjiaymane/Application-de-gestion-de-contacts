@@ -100,8 +100,22 @@ class User{
 
     
 
-   
+    function displayContact($id){
 
+        $sql_edit = "SELECT * FROM contacts WHERE id=?";
+        $REQ= $this->conx->prepare($sql_edit);
+        $REQ->execute([$id]);
+        $res =$REQ->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($res) {
+           foreach ($res as $req)
+            $_SESSION['name'] = $req['name'];
+            $_SESSION['phone'] = $req['phone'];
+            $_SESSION['email'] = $req['email'];
+            $_SESSION['address'] = $req['address'];
+        }
+
+    }
 }
 
 
